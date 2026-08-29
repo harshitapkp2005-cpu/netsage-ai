@@ -198,7 +198,7 @@ python Project_Files/rule_checker.py
 #   -> No obvious deterministic errors found...
 # ==================================================
 
-## 📁 Project Structure
+### 📁 Project Structure
 netsage-ai/
 │
 ├──  README.md                          # This file
@@ -223,17 +223,19 @@ netsage-ai/
     ├──  Demo_Video.mp4                 # 5-minute project walkthrough
     └──  Dashboard_Screenshot.pdf       # Dashboard visualization
 
-## 📺 Demo Video
+### 📺 Demo Video
 Watch our 5-minute demonstration showing:
-Broken network scenario in Packet Tracer
-AI diagnosis with structured JSON output
-Human review and correction process
-Fix implementation and verification
-Dashboard analytics
+
+•Broken network scenario in Packet Tracer
+•AI diagnosis with structured JSON output
+•Human review and correction process
+•Fix implementation and verification
+•Dashboard analytics
+
 Video: Demo/Demo_Video.mp4
 
-👨‍💻 Author
+### 👨‍💻 Author
 Harshita Pandey
 
-LinkedIn : linkedin.com/in/harshita-pandey-6a16903a6
-GitHub   : github.com/harshitapkp2005-cpu
+LinkedIn
+GitHub
