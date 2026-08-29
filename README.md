@@ -45,51 +45,64 @@ When a PC cannot reach a server, is the problem VLAN misconfiguration, routing f
 ## 🏗 Architecture
 
 🏗 Architecture
-┌─────────────────────┐ ┌──────────────────────┐ ┌──────────────────────┐
-│ Network Lab │ │ AI Assistant │ │ Human Review │
-│ │ │ │ │ │
-│ Cisco Packet Tracer │──────▶│ AI Engine (LLM) │──────▶│ Network Engineer │
-│ 30 Broken Scenarios │ │ JSON Output │ │ Accept/Edit/Reject │
-│ Show-Command Output │ │ Confidence Score │ │ Apply Fix/Verify │
-└─────────────────────┘ └──────────────────────┘ └──────────────────────┘
-│ │ │
-▼ ▼ ▼
-┌─────────────────────┐ ┌──────────────────────┐ ┌──────────────────────┐
-│ Python Rule │ │ Dashboard │ │ Responsible AI │
-│ Checker │ │ Analytics │ │ Log │
-│ Deterministic │ │ Charts + Metrics │ │ 5 Corrections │
-│ Validation │ │ Performance Stats │ │ Documentation │
-└─────────────────────┘ └──────────────────────┘ └──────────────────────┘
+┌────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                    NETSAGE AI ARCHITECTURE                                 │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
 
+  [ 1. DATA LAYER ]                 [ 2. PROCESSING LAYER ]                [ 3. ACTION LAYER ]
+
+┌──────────────────────┐          ┌──────────────────────────┐          ┌──────────────────────┐
+│  Cisco Packet Tracer │          │   Python Rule Checker    │          │  Human Reviewer      │
+│  (30 Lab Scenarios)  │─────────▶│  (Deterministic Checks)  │─────────▶│  (Accept/Edit/Reject)│
+│  Show-Command Output │          │  (Instant Validation)    │          │  (Apply & Verify)    │
+└──────────────────────┘          └────────────┬─────────────┘          └──────────────────────┘
+                                               │ 
+                                               │ (If no obvious error found)
+                                               ▼ 
+                                     ┌──────────────────────────┐
+                                     │    AI Diagnosis Engine   │
+                                     │  (Structured JSON Output)│
+                                     │  (Root Cause & Evidence) │
+                                     └────────────┬─────────────┘
+                                                  │
+                                                  ▼
+                                     ┌──────────────────────────┐      ┌──────────────────────┐
+                                     │  Interactive Dashboard   │◀─────│  Responsible AI Log  │
+                                     │  (Charts & Metrics)      │      │  (Failure Analysis)  │
+                                     └──────────────────────────┘      └──────────────────────┘
 
 ### Request Lifecycle
-Network Symptom Observed
-│
-▼
-Python Rule Checker
-│
-├─── Obvious Error Found? ── Yes ──▶ Alert Engineer Immediately
-│
-No
-│
-▼
-AI Diagnosis Engine
-│
-▼
-Structured JSON Response
-│
-├─── Root Cause
-├─── Confidence Score (0-100)
-├─── Evidence from Commands
-├─── Next Diagnostic Command
-─── Fix Steps
-│
-▼
-Human Review
-│
-├─── Accepted (83%) ──▶ Apply Fix ──▶ Verify
-├─── Edited (3%) ──▶ Correct Details ──▶ Apply
-└─── Rejected (17%) ─▶ Human Diagnosis ──▶ Apply
+┌────────────────────────────────────────────────────────────────────────────────────────────┐
+│                               TROUBLESHOOTING REQUEST LIFECYCLE                            │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
+┌──────────────────────┐          ┌──────────────────────┐          ┌──────────────────────┐
+│  Network Symptom     │          │  Python Rule Checker │          │  AI Diagnosis Engine │
+│  (e.g., Ping fails)  │─────────▶│  Scans show-commands │─────────▶│  Analyzes evidence   │
+│  + Show Commands     │          │  for obvious errors  │          │  Generates JSON      │
+└──────────────────────┘          └──────────┬───────────┘          └──────────┬───────────┘
+                                             │                                  │
+                        ┌────────────────────┘                                  │
+                        │ (Error Found: e.g., "Interface Down")                 │
+                        ▼                                                       ▼
+               ┌──────────────────────┐                              ┌──────────────────────┐
+               │  Instant Alert       │                              │  Structured Output:  │
+               │  "Fix Physical Layer"│                              │  • Root Cause        │
+               └──────────────────────┘                              │  • Confidence Score  │
+                                                                     │  • Evidence Quote    │
+                                                                     │  • Next Command      │
+                                                                     │  • Fix Steps         │
+                                                                     └──────────┬───────────┘
+                                                                                │
+  STEP 4: REVIEW                 STEP 5: RESOLVE                                │
+┌──────────────────────┐        ┌──────────────────────┐                        │
+│  Human Expert        │◀───────│  Mandatory Human     │◀───────────────────────┘
+│  Applies Fix &       │        │  Review Decision:    │
+│  Verifies Network    │        │  ✅ Accepted (83%)   │
+│  (Ping succeeds)     │        │  ✏️ Edited (3%)     │
+└──────────────────────┘        │  ❌ Rejected (17%)  │
+                                └──────────────────────┘
 
 ---
 
