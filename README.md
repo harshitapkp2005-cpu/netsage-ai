@@ -4,7 +4,7 @@ AI-assisted network troubleshooting assistant with mandatory human review for Ci
 
 **Python** **Cisco Packet Tracer** **AI/ML** **Network Engineering** **Chart.js**
 
-**LIVE DEMO**: [Open Dashboard](Dashboard/dashboard.html)
+**LIVE DEMO**: (Dashboard/dashboard.html)
 
 ---
 
