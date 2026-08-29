@@ -62,8 +62,8 @@ This project centralizes symptoms, topology notes, and Cisco `show` command outp
                                      └──────────────────────────┘      └──────────────────────┘
 
 ## 🔄 Request Lifecycle
-
 ```text
+
   STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
 ┌──────────────────────┐          ┌──────────────────────┐          ┌──────────────────────┐
 │  Network Symptom     │          │  Python Rule Checker │          │  AI Diagnosis Engine │
@@ -91,4 +91,3 @@ This project centralizes symptoms, topology notes, and Cisco `show` command outp
 │  (Ping succeeds)     │        │  ✏️ Edited (3%)     │
 └──────────────────────┘        │  ❌ Rejected (17%)  │
                                 └──────────────────────┘
-
