@@ -79,13 +79,13 @@ When a PC cannot reach a server, is the problem VLAN misconfiguration, routing f
   STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
 ┌──────────────────────┐          ┌──────────────────────┐          ┌──────────────────────┐
 │  Network Symptom     │          │  Python Rule Checker │          │  AI Diagnosis Engine │
-│  (e.g., Ping fails)  │─────────▶│  Scans show-commands │─────────▶│  Analyzes evidence   │
+│  (e.g., Ping fails)  │─────────▶│  Scans show-commands│─────────▶│  Analyzes evidence   │
 │  + Show Commands     │          │  for obvious errors  │          │  Generates JSON      │
 └──────────────────────┘          └──────────┬───────────┘          └──────────┬───────────┘
-                                             │                                  │
-                        ┌────────────────────┘                                  │
-                        │ (Error Found: e.g., "Interface Down")                 │
-                        ▼                                                       ▼
+                                             │                                 │
+                        ┌────────────────────┘                                 │
+                        │ (Error Found: e.g., "Interface Down")                │
+                        ▼                                                      ▼
                ┌──────────────────────┐                              ┌──────────────────────┐
                │  Instant Alert       │                              │  Structured Output:  │
                │  "Fix Physical Layer"│                              │  • Root Cause        │
@@ -96,10 +96,10 @@ When a PC cannot reach a server, is the problem VLAN misconfiguration, routing f
                                                                      └──────────┬───────────┘
                                                                                 │
   STEP 4: REVIEW                 STEP 5: RESOLVE                                │
-┌──────────────────────┐        ┌──────────────────────┐                        │
-│  Human Expert        │◀───────│  Mandatory Human     │◀───────────────────────┘
+┌──────────────────────┐        ┌─────────────────────┐                        │
+│  Human Expert        │◀───────│  Mandatory Human    │◀──────────────────────┘
 │  Applies Fix &       │        │  Review Decision:    │
-│  Verifies Network    │        │  ✅ Accepted (83%)   │
+│  Verifies Network    │        │  ✅ Accepted (83%)  │
 │  (Ping succeeds)     │        │  ✏️ Edited (3%)     │
 └──────────────────────┘        │  ❌ Rejected (17%)  │
                                 └──────────────────────┘
@@ -198,44 +198,63 @@ python Project_Files/rule_checker.py
 #   -> No obvious deterministic errors found...
 # ==================================================
 
-### 📁 Project Structure
+┌────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                    PROJECT STRUCTURE                                       │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
+
 netsage-ai/
 │
-├──  README.md                          # This file
-├──  Summary_Document.docx              # Complete project report
+├──  README.md                            # Professional documentation
+├──  Summary_Document.docx                # Complete project report
 │
-├──  Project_Files/
-│   ├──  rule_checker.py                # Deterministic validation script
-│   ──  dashboard.html                 # Interactive analytics dashboard
+├──  Project_Files/                       # Core system components
+│   ├──  rule_checker.py                  # Deterministic validation script
+│   └──  dashboard.html                   # Interactive analytics dashboard
 │
-├──  Datasets/
-│   ├──  cases.csv                      # 30 troubleshooting scenarios
-│   └──  review_log.csv                 # AI acceptance/rejection tracking
+├──  Datasets/                            # Data management
+│   ├──  cases.csv                        # 30 troubleshooting scenarios
+│   └──  review_log.csv                   # AI acceptance/rejection tracking
 │
-── 📂 Prompts/
-│   ├──  system_prompt.md               # AI system instructions + examples
-│   └──  user_prompt_template.md        # Case submission template
+├──  Prompts/                             # AI interaction templates
+│   ├──  system_prompt.md                 # AI system instructions + examples
+│   └──  user_prompt_template.md          # Case submission template
 │
-├── 📂 Responsible_AI_Log/
-│   └──  Responsible_AI_Log.docx        # 5 AI failure case studies
+├──  Responsible_AI_Log/                  # Safety documentation
+│   └──  Responsible_AI_Log.docx          # 5 AI failure case studies
 │
-└──  Demo/
-    ├──  Demo_Video.mp4                 # 5-minute project walkthrough
-    └──  Dashboard_Screenshot.pdf       # Dashboard visualization
+└──  Demo/                                # Visual demonstration
+    ├──  Demo_Video.mp4                   # 5-minute project walkthrough
+    └──  Dashboard_Screenshot.pdf         # Dashboard visualization
 
-### 📺 Demo Video
-Watch our 5-minute demonstration showing:
+┌────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                     DEMONSTRATION VIDEO                                    │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
 
-•Broken network scenario in Packet Tracer
-•AI diagnosis with structured JSON output
-•Human review and correction process
-•Fix implementation and verification
-•Dashboard analytics
+  Watch our 5-minute demonstration showcasing the complete troubleshooting workflow:
 
-Video: Demo/Demo_Video.mp4
+  ┌──────────────────────────────────────────────────────────────────────────────────────┐
+  │                                                                                      │
+  │   ▶ BROKEN CASE          ▶ AI DIAGNOSIS          ▶ HUMAN REVIEW          ▶ FIX     │
+  │   ─────────────          ─────────────           ────────────           ──────       │
+  │   Packet Tracer          JSON Output             Accept/Reject          Verify       │
+  │   Scenario Loaded        Root Cause              Expert Decision        Success      │
+  │   Symptom Shown          Confidence Score        Correction Applied     Tested       │
+  │                                                                                      │
+  └──────────────────────────────────────────────────────────────────────────────────────┘
 
-### 👨‍💻 Author
-Harshita Pandey
+  🎥 Video Location: Demo/Demo_Video.mp4
+  
+  📋 Video Contents:
+     • Network fault demonstration in Cisco Packet Tracer
+     • AI diagnosis with structured JSON output
+     • Human review and correction process
+     • Fix implementation and verification
+     • Dashboard analytics overview
 
-LinkedIn
-GitHub
+┌────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                          AUTHOR                                            │
+└────────────────────────────────────────────────────────────────────────────────────────────┘
+
+   Name:            Harshita Pandey
+   LinkedIn:        www.linkedin.com/in/harshita-pandey-6a16903a6
+   GitHub:          https://github.com/harshitapkp2005-cpu
