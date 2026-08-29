@@ -188,7 +188,5 @@ netsage-ai/
 
 ## 📩 Contact Info
 
-* 💼 **LinkedIn:** [Connect on LinkedIn](www.linkedin.com/in/harshita-pandey-6a16903a6)
-* 🐙 **GitHub:** [Follow on GitHub](https://github.com/harshitapkp2005-cpu)
-
-
+[![LinkedIn](https://shields.io)](https://linkedin.com/in/harshita-pandey-6a16903a6)
+[![GitHub](https://shields.io)](https://github.com/harshitapkp2005-cpu)
