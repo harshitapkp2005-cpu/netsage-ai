@@ -61,7 +61,9 @@ This project centralizes symptoms, topology notes, and Cisco `show` command outp
                                      │  (Charts & Metrics)      │      │  (Failure Analysis)  │
                                      └──────────────────────────┘      └──────────────────────┘
 
-**🔄 Request Lifecycle**
+## 🔄 Request Lifecycle
+
+```text
   STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
 ┌──────────────────────┐          ┌──────────────────────┐          ┌──────────────────────┐
 │  Network Symptom     │          │  Python Rule Checker │          │  AI Diagnosis Engine │
