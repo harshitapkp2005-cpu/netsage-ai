@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NetSage AI - Troubleshooting Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f4f6f9; color: #333; }
+  header { background: linear-gradient(135deg, #1e3c72, #2a5298); color: white; padding: 30px; text-align: center; }
+  header h1 { margin: 0; font-size: 2.2em; }
+  header p { margin: 5px 0 0; opacity: 0.9; }
+  .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+  .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
+  .card h3 { margin: 0; color: #666; font-size: 0.9em; text-transform: uppercase; }
+  .card .number { font-size: 2.5em; font-weight: bold; margin: 10px 0; }
+  .accepted { color: #28a745; }
+  .rejected { color: #dc3545; }
+  .edited { color: #ffc107; }
+  .total { color: #2a5298; }
+  .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+  .chart-box { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .chart-box h2 { margin-top: 0; color: #1e3c72; font-size: 1.2em; }
+  .corrections { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+  .corrections h2 { color: #1e3c72; margin-top: 0; }
+  .correction-item { border-left: 4px solid #dc3545; padding: 15px; margin: 15px 0; background: #fff5f5; border-radius: 4px; }
+  .correction-item h4 { margin: 0 0 8px; color: #c82333; }
+  .correction-item p { margin: 5px 0; font-size: 0.95em; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold; margin-right: 5px; }
+  .badge-ai { background: #e3f2fd; color: #1565c0; }
+  .badge-human { background: #ffebee; color: #c62828; }
+  footer { text-align: center; padding: 20px; color: #666; font-size: 0.9em; }
+  @media (max-width: 768px) { .charts { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>NetSage AI - Troubleshooting Dashboard</h1>
+  <p>AI-Assisted Network Troubleshooting with Human Review</p>
+</header>
+
+<div class="container">
+
+  <div class="cards">
+    <div class="card">
+      <h3>Total Cases Analyzed</h3>
+      <div class="number total">30</div>
+    </div>
+    <div class="card">
+      <h3>AI Accepted</h3>
+      <div class="number accepted">25</div>
+    </div>
+    <div class="card">
+      <h3>AI Edited</h3>
+      <div class="number edited">1</div>
+    </div>
+    <div class="card">
+      <h3>AI Rejected</h3>
+      <div class="number rejected">4</div>
+    </div>
+    <div class="card">
+      <h3>AI Agreement Rate</h3>
+      <div class="number accepted">83%</div>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h2>Issues by OSI Layer</h2>
+      <canvas id="osiChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h2>AI Human Review Outcome</h2>
+      <canvas id="agreementChart"></canvas>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <h2>Issue Severity Distribution</h2>
+      <canvas id="severityChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h2>Concept Tags (Top Fault Types)</h2>
+      <canvas id="conceptChart"></canvas>
+    </div>
+  </div>
+
+  <div class="corrections">
+    <h2>Responsible AI Log - Human Corrections</h2>
+    <p>Below are the 5 cases where the AI diagnosis was corrected by a human expert, demonstrating the necessity of human oversight.</p>
+
+    <div class="correction-item">
+      <h4>Case 08 - Trunking vs VLAN Mismatch</h4>
+      <p><span class="badge badge-ai">AI Said:</span> VLAN mismatch on switch port (Confidence: 70%)</p>
+      <p><span class="badge badge-human">Human Corrected:</span> Trunk link incorrectly configured as access port</p>
+      <p><strong>Why AI Failed:</strong> AI ignored the empty <code>show interfaces trunk</code> output and guessed a VLAN assignment issue.</p>
+    </div>
+
+    <div class="correction-item">
+      <h4>Case 12 - Encapsulation Mismatch</h4>
+      <p><span class="badge badge-ai">AI Said:</span> VLAN 10 was deleted from switch database (Confidence: 80%)</p>
+      <p><span class="badge badge-human">Human Corrected:</span> Router subinterface encapsulating wrong VLAN ID (99 instead of 10)</p>
+      <p><strong>Why AI Failed:</strong> AI confused a Layer 2 switch issue with a Layer 2/3 router encapsulation issue.</p>
+    </div>
+
+    <div class="correction-item">
+      <h4>Case 17 - Blackhole Route</h4>
+      <p><span class="badge badge-ai">AI Said:</span> Static route for VLAN 20 is missing (Confidence: 60%)</p>
+      <p><span class="badge badge-human">Human Corrected:</span> Traffic routed to Null0 (Blackhole route detected)</p>
+      <p><strong>Why AI Failed:</strong> AI failed to understand that Null0 is a virtual blackhole interface that drops traffic.</p>
+    </div>
+
+    <div class="correction-item">
+      <h4>Case 22 - DHCP Exhaustion</h4>
+      <p><span class="badge badge-ai">AI Said:</span> DHCP server service is turned off (Confidence: 50%)</p>
+      <p><span class="badge badge-human">Human Corrected:</span> DHCP excluded-address range covers entire subnet</p>
+      <p><strong>Why AI Failed:</strong> AI defaulted to "DHCP is down" without reading the excluded-address configuration.</p>
+    </div>
+
+    <div class="correction-item">
+      <h4>Case 26 - ACL Block vs Physical Down</h4>
+      <p><span class="badge badge-ai">AI Said:</span> Router interface is physically down (Confidence: 40%)</p>
+      <p><span class="badge badge-human">Human Corrected:</span> Inbound ACL explicitly blocking ICMP traffic</p>
+      <p><strong>Why AI Failed:</strong> AI guessed Layer 1 issue while Layer 4 ACL evidence was clearly present.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>NetSage AI Project Dashboard | Generated: August 25, 2026</p>
+</footer>
+
+<script>
+  new Chart(document.getElementById('osiChart'), {
+    type: 'pie',
+    data: {
+      labels: ['Layer 1 (Physical)', 'Layer 2 (Data Link)', 'Layer 3 (Network)', 'Layer 4 (Transport)', 'Layer 7 (Application)'],
+      datasets: [{
+        data: [5, 7, 10, 2, 6],
+        backgroundColor: ['#e74c3c', '#f39c12', '#3498db', '#9b59b6', '#2ecc71']
+      }]
+    }
+  });
+
+  new Chart(document.getElementById('agreementChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Accepted', 'Edited', 'Rejected'],
+      datasets: [{
+        label: 'Number of Cases',
+        data: [25, 1, 4],
+        backgroundColor: ['#28a745', '#ffc107', '#dc3545']
+      }]
+    },
+    options: { scales: { y: { beginAtZero: true, ticks: { stepSize: 5 } } } }
+  });
+
+  new Chart(document.getElementById('severityChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Critical', 'High', 'Medium'],
+      datasets: [{
+        data: [1, 22, 7],
+        backgroundColor: ['#721c24', '#dc3545', '#ffc107']
+      }]
+    }
+  });
+
+  new Chart(document.getElementById('conceptChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Interface Status', 'IP Addressing', 'VLAN/Trunk', 'DHCP', 'ACL', 'Routing', 'DNS', 'Wireless'],
+      datasets: [{
+        label: 'Cases',
+        data: [5, 4, 5, 3, 2, 4, 2, 3],
+        backgroundColor: '#2a5298'
+      }]
+    },
+    options: { indexAxis: 'y', scales: { x: { beginAtZero: true } } }
+  });
+</script>
+
+</body>
+</html>

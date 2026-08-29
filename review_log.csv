@@ -1,0 +1,31 @@
+Case_ID,AI_Root_Cause,AI_Confidence,Human_Decision,Human_Correction_Notes
+Case_01,PC1 has an incorrect IP address that does not match the subnet.,100,Accepted,AI correctly identified the wrong IP address based on the ipconfig output.
+Case_02,PC2 has an incorrect subnet mask causing routing confusion.,95,Accepted,AI correctly spotted the 255.255.0.0 mask in the ipconfig output.
+Case_03,The default gateway IP on PC3 is typed incorrectly.,100,Accepted,AI correctly identified the typo in the gateway IP.
+Case_04,Duplicate IP address conflict between PC3 and PC4.,90,Accepted,AI correctly noticed both PCs have the exact same IP.
+Case_05,Router subinterface Gi0/0.10 has the wrong IP address.,95,Accepted,AI correctly read the show ip interface brief output.
+Case_06,Physical interface is down or disconnected.,100,Accepted,AI correctly identified the admin down status.
+Case_07,Physical router interface GigabitEthernet0/0 is shut down.,100,Accepted,AI correctly identified the router port shutdown.
+Case_08,VLAN mismatch on the switch port.,70,Rejected,AI guessed it was a VLAN mismatch but missed the trunking issue. Human corrected: The trunk link is incorrectly configured as an access port.
+Case_09,Physical cable is unplugged or deleted.,100,Accepted,AI correctly identified the disconnected status.
+Case_10,Switch port FastEthernet0/2 is administratively shut down.,100,Accepted,AI correctly read the interface status.
+Case_11,Device is assigned to the wrong VLAN (VLAN 99).,95,Accepted,AI correctly spotted VLAN 99 in the show vlan brief output.
+Case_12,Router subinterface is encapsulating the wrong VLAN ID.,80,Edited,AI said the VLAN was deleted. Human corrected: The VLAN exists, but the router is encapsulating VLAN 99 instead of 10.
+Case_13,VLAN 10 was deleted from the switch database.,90,Accepted,AI correctly noticed VLAN 10 was missing from the output.
+Case_14,PC3 switch port is assigned to VLAN 10 instead of 20.,95,Accepted,AI correctly identified the wrong VLAN assignment.
+Case_15,Router subinterface for VLAN 20 is shut down.,100,Accepted,AI correctly identified the admin down status on the subinterface.
+Case_16,Fake default static route pointing to non-existent next-hop.,85,Accepted,AI correctly spotted the 192.168.10.99 route in the routing table.
+Case_17,Static route for VLAN 20 is missing.,60,Rejected,AI hallucinated that the route was missing. Human corrected: The route exists but points to Null0 (Blackhole route).
+Case_18,Physical interface connecting to Switch Sw has the wrong IP.,90,Accepted,AI correctly identified the IP mismatch on Gi0/1.
+Case_19,IP address was removed from the VLAN 20 subinterface.,95,Accepted,AI correctly noticed the unassigned IP status.
+Case_20,Router subinterface has an incorrect subnet mask.,95,Accepted,AI correctly spotted the 255.255.0.0 mask on the router.
+Case_21,DHCP pool is missing the network statement.,85,Accepted,AI correctly deduced the missing network command from the APIPA address.
+Case_22,DHCP server service is turned off.,50,Rejected,AI guessed the DHCP service was down. Human corrected: DHCP is on, but the excluded-address range covers the entire subnet.
+Case_23,DHCP server is assigning an incorrect default gateway.,95,Accepted,AI correctly spotted the wrong gateway in the DHCP config.
+Case_24,DNS server is set to an unreachable external IP.,90,Accepted,AI correctly identified 8.8.8.8 as the unreachable DNS.
+Case_25,Local DNS server has no host records configured.,85,Accepted,AI correctly deduced the empty DNS database from the nslookup failure.
+Case_26,Router interface is physically down.,40,Rejected,AI ignored the ACL output and guessed the interface was down. Human corrected: Interface is up, but an ACL is explicitly denying ICMP traffic.
+Case_27,Inbound ACL is blocking TCP port 80 traffic.,90,Accepted,AI correctly identified the port 80 block in the ACL.
+Case_28,Wireless laptop is configured with the wrong SSID.,95,Accepted,AI correctly identified the SSID mismatch.
+Case_29,Wi-Fi security passphrase is incorrect.,90,Accepted,AI correctly identified the WPA2 passphrase mismatch.
+Case_30,Switch port connecting to the AP is administratively shut down.,100,Accepted,AI correctly identified the admin down status on the AP port.
