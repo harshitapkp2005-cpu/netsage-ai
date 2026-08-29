@@ -198,9 +198,7 @@ python Project_Files/rule_checker.py
 #   -> No obvious deterministic errors found...
 # ==================================================
 
-┌────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                    PROJECT STRUCTURE                                       │
-└────────────────────────────────────────────────────────────────────────────────────────────┘
+### 📁 Project Structure
 
 netsage-ai/
 │
@@ -226,9 +224,7 @@ netsage-ai/
     ├──  Demo_Video.mp4                   # 5-minute project walkthrough
     └──  Dashboard_Screenshot.pdf         # Dashboard visualization
 
-┌────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                     DEMONSTRATION VIDEO                                    │
-└────────────────────────────────────────────────────────────────────────────────────────────┘
+### 📺 Demo Video
 
   Watch our 5-minute demonstration showcasing the complete troubleshooting workflow:
 
@@ -251,9 +247,7 @@ netsage-ai/
      • Fix implementation and verification
      • Dashboard analytics overview
 
-┌────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                          AUTHOR                                            │
-└────────────────────────────────────────────────────────────────────────────────────────────┘
+### Author
 
    Name:            Harshita Pandey
    LinkedIn:        www.linkedin.com/in/harshita-pandey-6a16903a6
