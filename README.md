@@ -1,50 +1,56 @@
-🛡 NetSage AI
-AI-Assisted Network Troubleshooting Assistant with Mandatory Human Review
-Python | Cisco Packet Tracer | LLM API | HTML5 | Data Visualization
-Status: 🟢 Production Ready | Safety Level: 🔒 Human-in-the-Loop
-🧭 Table of Contents
-About
-Core Modules
-Architecture
-Request Lifecycle
-Tech Stack
-Responsible AI & Safety
-Getting Started
-Project Structure
-Author
-🎯 About
-Junior network engineers often struggle to connect complex network symptoms to their root causes. Is it a VLAN mismatch, a routing loop, or a security ACL blocking traffic?
-NetSage AI solves this by acting as an intelligent "Network Doctor." It analyzes symptoms and Cisco show command outputs to diagnose issues instantly. However, unlike standard AI tools, NetSage enforces a Safety Rule: no fix is accepted without Mandatory Human Review. This ensures that AI hallucinations never damage live network infrastructure.
-🧩 Core Modules
-Module
-Description
-🧪 Case Dataset
-30 real-world broken network scenarios (VLAN, Routing, DHCP, ACL, Wireless) built in Cisco Packet Tracer.
-🐍 Rule Checker
-A Python script that performs deterministic checks (e.g., catching physical link down or APIPA errors) instantly.
-🧠 AI Diagnosis
-Structured LLM prompts that force JSON output containing Root Cause, Confidence, and Evidence.
-👨‍💼 Human Review
-A mandatory validation step where a senior engineer must Accept, Edit, or Reject the AI's suggestion.
-📊 Dashboard
-An interactive HTML dashboard visualizing AI performance, issue distribution, and the "Responsible AI Log."
-🏗 Architecture
-┌────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                    NETSAGE AI ARCHITECTURE                                 │
-└────────────────────────────────────────────────────────────────────────────────────────────┘
+# 🌐 NetSage AI
+An AI-assisted network troubleshooting assistant with mandatory human review for Cisco lab environments.
 
-  [ 1. DATA LAYER ]                 [ 2. PROCESSING LAYER ]                [ 3. ACTION LAYER ]
+Python • CSV • HTML5 • Chart.js • Cisco Packet Tracer • LLM API
 
+**LIVE DASHBOARD** ✨: [Open `dashboard.html`](Project_Files/dashboard.html)  
+**DEMO VIDEO** 🎥: [Watch Demo](Demo/Demo_Video.mp4)
+
+## 🧭 Table of Contents
+- [About](#-about)
+- [Features](#-features)
+- [Architecture](#-architecture)
+- [Request Lifecycle](#-request-lifecycle)
+- [Tech Stack](#-tech-stack)
+- [Responsible AI & Safety](#-responsible-ai--safety)
+- [Getting Started](#-getting-started)
+- [Project Structure](#-project-structure)
+- [Author](#-author)
+
+---
+
+## 🎯 About
+NetSage AI replaces the guesswork and trial-and-error that junior network engineers face when diagnosing complex lab environments. When a PC cannot reach a server, is the problem a VLAN mismatch, routing error, DHCP failure, DNS issue, or ACL block? 
+
+This project centralizes symptoms, topology notes, and Cisco `show` command outputs into a single, intelligent platform. It uses structured AI prompts to suggest root causes and fixes, but critically, it enforces a **mandatory human-in-the-loop review** before any configuration is applied, ensuring network safety and preventing AI hallucinations.
+
+---
+
+## 🧩 Features
+| Feature | Description |
+| :--- | :--- |
+| 📚 **Case Dataset** | 30 real-world Cisco Packet Tracer scenarios covering Layers 1 through 7. |
+| 🐍 **Rule Checker** | Deterministic Python script that instantly catches obvious config errors (e.g., interface down, APIPA addresses). |
+| 🤖 **AI Diagnosis** | Structured prompting that forces the AI to output strict JSON with root cause, confidence, evidence, and fix steps. |
+| 👨‍💻 **Human Review** | Mandatory oversight system logging every case as Accepted, Edited, or Rejected by a human expert. |
+| 📊 **Visual Dashboard** | Interactive HTML dashboard displaying issue distribution, AI agreement rates (83%), and correction logs. |
+
+---
+
+## 🏗 Architecture
+```text
 ┌──────────────────────┐          ┌──────────────────────────┐          ┌──────────────────────┐
-│  Cisco Packet Tracer │          │   Python Rule Checker    │          │  Human Reviewer      │
-│  (30 Lab Scenarios)  │─────────▶│  (Deterministic Checks)  │─────────▶│  (Accept/Edit/Reject)│
+│    DATA LAYER        │          │    PROCESSING LAYER      │          │    ACTION LAYER      │
+│                      │          │                          │          │                      │
+│  Cisco Packet Tracer │─────────▶│  Python Rule Checker     │─────────▶│  Human Reviewer      │
+│  (30 Lab Scenarios)  │          │  (Deterministic Checks)  │          │  (Accept/Edit/Reject)│
 │  Show-Command Output │          │  (Instant Validation)    │          │  (Apply & Verify)    │
 └──────────────────────┘          └────────────┬─────────────┘          └──────────────────────┘
                                                │ 
                                                │ (If no obvious error found)
                                                ▼ 
                                      ┌──────────────────────────┐
-                                     │    AI Diagnosis Engine   │
+                                     │  AI Diagnosis Engine     │
                                      │  (Structured JSON Output)│
                                      │  (Root Cause & Evidence) │
                                      └────────────┬─────────────┘
@@ -54,11 +60,8 @@ An interactive HTML dashboard visualizing AI performance, issue distribution, an
                                      │  Interactive Dashboard   │◀─────│  Responsible AI Log  │
                                      │  (Charts & Metrics)      │      │  (Failure Analysis)  │
                                      └──────────────────────────┘      └──────────────────────┘
-🔄 Request Lifecycle
-┌────────────────────────────────────────────────────────────────────────────────────────────┐
-│                               TROUBLESHOOTING REQUEST LIFECYCLE                            │
-└────────────────────────────────────────────────────────────────────────────────────────────┘
 
+**🔄 Request Lifecycle**
   STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
 ┌──────────────────────┐          ┌──────────────────────┐          ┌──────────────────────┐
 │  Network Symptom     │          │  Python Rule Checker │          │  AI Diagnosis Engine │
@@ -86,40 +89,4 @@ An interactive HTML dashboard visualizing AI performance, issue distribution, an
 │  (Ping succeeds)     │        │  ✏️ Edited (3%)     │
 └──────────────────────┘        │  ❌ Rejected (17%)  │
                                 └──────────────────────┘
-🛠 Tech Stack
-Network Simulation
-Cisco Packet Tracer – Building 30 realistic lab scenarios (Routers, Switches, APs).
-Backend & Logic
-Python 3.x – Running the deterministic Rule Checker script.
-LLM API (Copilot/ChatGPT) – Powering the diagnosis engine with structured prompts.
-Frontend & Visualization
-HTML5 / CSS3 – Lightweight, dependency-free dashboard.
-Chart.js – Rendering interactive pie and bar charts for AI performance metrics.
-🛡 Responsible AI & Safety
-This project prioritizes safety over automation. We identified 5 Critical Failure Modes where AI hallucinated or missed context, requiring human correction:
-Case 08 (Trunking vs. VLAN): AI missed the empty trunk table.
-Case 12 (Encapsulation): AI confused router config with switch database.
-Case 17 (Blackhole Routes): AI failed to understand the Null0 interface.
-Case 22 (DHCP Exhaustion): AI guessed "Service Down" instead of reading the exclusion range.
-Case 26 (ACL vs. Physical): AI ignored Layer 4 security logs and guessed a physical break.
-Conclusion: AI is a powerful assistant, but the "Human-in-the-Loop" is non-negotiable for network safety.
-🚀 Getting Started
-Prerequisites
-Python 3.8+
-Cisco Packet Tracer
-Web Browser (Chrome/Edge)
-Installation & Execution
-Run the Rule Checker:
-bash
-12
-View the Dashboard:
-Open Project_Files/dashboard.html in your web browser to view the analytics.
-Simulate a Case:
-Open Datasets/cases.csv, pick a case, and run it through your preferred LLM using the prompts in Prompts/system_prompt.md.
-📁 Project Structure
-text
-12345678910111213141516
-👨‍💻 Author
-[Your Name]
-College: [Your College Name]
-Role: Network Architect & AI Engineer
+
