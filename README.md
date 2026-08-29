@@ -63,6 +63,41 @@ This project centralizes symptoms, topology notes, and Cisco `show` command outp
 
 
 
+
+## 🔄 Request Lifecycle
+
+```text
+  STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
+┌──────────────────────┐          ┌──────────────────────┐          ┌──────────────────────┐
+│  Network Symptom     │          │  Python Rule Checker │          │  AI Diagnosis Engine │
+│  (e.g., Ping fails)  │─────────▶│  Scans show-commands │─────────▶│  Analyzes evidence   │
+│  + Show Commands     │          │  for obvious errors  │          │  Generates JSON      │
+└──────────────────────┘          └──────────┬───────────┘          └──────────┬───────────┘
+                                             │                                  │
+                        ┌────────────────────┘                                  │
+                        │ (Error Found: e.g., "Interface Down")                 │
+                        ▼                                                       ▼
+               ┌──────────────────────┐                              ┌──────────────────────┐
+               │  Instant Alert       │                              │  Structured Output:  │
+               │  "Fix Physical Layer"│                              │  • Root Cause        │
+               └──────────────────────┘                              │  • Confidence Score  │
+                                                                     │  • Evidence Quote    │
+                                                                     │  • Next Command      │
+                                                                     │  • Fix Steps         │
+                                                                     └──────────┬───────────┘
+                                                                                │
+  STEP 4: REVIEW                 STEP 5: RESOLVE                                │
+┌──────────────────────┐        ┌──────────────────────┐                        │
+│  Human Expert        │◀───────│  Mandatory Human     │◀───────────────────────┘
+│  Applies Fix &       │        │  Review Decision:    │
+│  Verifies Network    │        │  ✅ Accepted (83%)   │
+│  (Ping succeeds)     │        │  ✏️ Edited (3%)     │
+└──────────────────────┘        │  ❌ Rejected (17%)  │
+                                └──────────────────────┘
+```
+
+---
+
 ## 🛠 Tech Stack
 
 **Core & Scripts**
@@ -146,12 +181,14 @@ netsage-ai/
 
 ---
 
+
 ## 👨‍💻 Author
 
 **Harshita Pandey** 
 
-# 🌐 Connect with Me
+## 📩 Contact Info
 
-[![LinkedIn](https://shields.io)](linkedin.com/in/harshita-pandey-6a16903a6)
-[![GitHub](https://shields.io)](github.com/harshitapkp2005-cpu)
+* 💼 **LinkedIn:** [Connect on LinkedIn](www.linkedin.com/in/harshita-pandey-6a16903a6)
+* 🐙 **GitHub:** [Follow on GitHub](https://github.com/harshitapkp2005-cpu)
+
 
