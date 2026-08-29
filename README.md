@@ -61,7 +61,7 @@ This project centralizes symptoms, topology notes, and Cisco `show` command outp
                                      │  (Charts & Metrics)      │      │  (Failure Analysis)  │
                                      └──────────────────────────┘      └──────────────────────┘
 
-**[📁 Project Structure]**
+## 📁 Project Structure
 
 ```text
   STEP 1: OBSERVE                  STEP 2: VALIDATE                   STEP 3: DIAGNOSE
@@ -182,4 +182,8 @@ netsage-ai/
 
 **Harshita Pandey** 
 
-LinkedIn  GitHub
+# 🌐 Connect with Me
+
+[![LinkedIn](https://shields.io)](www.linkedin.com/in/harshita-pandey-6a16903a6)
+[![GitHub](https://shields.io)](https://github.com/harshitapkp2005-cpu)
+
