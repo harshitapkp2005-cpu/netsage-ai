@@ -235,5 +235,5 @@ Video: Demo/Demo_Video.mp4
 👨‍💻 Author
 Harshita Pandey
 
-LinkedIn: harshita-pandey-6a16903a6
-GitHub   : harshitapkp2005-cpu
+LinkedIn : linkedin.com/in/harshita-pandey-6a16903a6
+GitHub   : github.com/harshitapkp2005-cpu
